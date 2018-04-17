@@ -1,0 +1,38 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "extends": ["standard", "standard-react"],
+  "rules": {
+    "strict": "off",
+    "no-var": "error",
+    "no-unused-vars": "warn",
+    "react/jsx-no-bind": [
+      "error",
+      {
+        "allowArrowFunctions": true,
+        "allowBind": false,
+        "ignoreRefs": true
+      }
+    ],
+    "react/jsx-uses-vars": "warn",
+    "react/no-did-update-set-state": "error",
+    "react/no-will-update-set-state": "error",
+    "react/no-unknown-property": "error",
+    "react/no-unused-prop-types": "error",
+    "react/no-this-in-sfc": "error",
+    "react/no-array-index-key": "error",
+    "react/no-direct-mutation-state": "error",
+    "react/prop-types": "error",
+    "react/react-in-jsx-scope": "error",
+    "react/no-redundant-should-component-update": "error",
+    "react/jsx-key": "error"
+  }
+}
