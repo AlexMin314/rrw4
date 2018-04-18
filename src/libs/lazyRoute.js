@@ -15,16 +15,18 @@ const lazyLoad = configs => {
     delay = 500,
     timeout = 10000,
     LoadingComponent = () => <div />,
-    ErrorComponent = _ErrorComp
+    ErrorComponent = _ErrorComp,
+    preload = false
   } = configs
 
   let preloadComp = null
 
-  const preload = async () => {
+  const preloadFn = async () => {
     const C = await configs.loader()
-    console.log(C.default)
     preloadComp = C.default
   }
+
+  if (preload) preloadFn()
 
   return class AsyncComponent extends React.Component {
     state = {
@@ -38,8 +40,7 @@ const lazyLoad = configs => {
     }
 
     static preload = () => {
-      console.log('preload entered')
-      preload()
+      preloadFn()
     }
 
     _delay = null
