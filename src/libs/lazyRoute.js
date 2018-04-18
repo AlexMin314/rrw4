@@ -18,9 +18,17 @@ const lazyLoad = configs => {
     ErrorComponent = _ErrorComp
   } = configs
 
+  let preloadComp = null
+
+  const preload = async () => {
+    const C = await configs.loader()
+    console.log(C.default)
+    preloadComp = C.default
+  }
+
   return class AsyncComponent extends React.Component {
     state = {
-      C: null,
+      C: preloadComp,
       LoadingComponent,
       ErrorComponent,
       delay,
@@ -29,29 +37,45 @@ const lazyLoad = configs => {
       errorTxt: ''
     }
 
+    static preload = () => {
+      console.log('preload entered')
+      preload()
+    }
+
     _delay = null
     _timeout = null
     _error = { LoadingComponent: this.state.ErrorComponent, error: true }
 
-    async componentDidMount () {
+    _setTimeouts = () => {
       this._delay = setTimeout(() => this.setState({ LoadingComponent }), this.state.delay)
       this._timeout = setTimeout(
         () => this.setState({ ...this._error, errorTxt: 'Timeout Error' }),
         this.state.timeout
       )
-      if (!this.state.C) {
-        try {
-          const C = await configs.loader()
-          !this.state.error && this.setState({ C: C.default })
-        } catch (e) {
-          this.setState({ ...this._error, errorTxt: e.message || e })
-        }
+    }
+
+    _clearTimeouts = () => {
+      clearTimeout(this._delay)
+      clearTimeout(this._timeout)
+    }
+
+    _startLoading = async () => {
+      try {
+        const C = await configs.loader()
+        this._clearTimeouts()
+        !this.state.error && this.setState({ C: C.default })
+      } catch (e) {
+        this.setState({ ...this._error, errorTxt: e.message || e })
       }
     }
 
+    async componentDidMount () {
+      this._setTimeouts()
+      if (!this.state.C) this._startLoading()
+    }
+
     componentWillUnmount () {
-      clearTimeout(this._delay)
-      clearTimeout(this._timeout)
+      this._clearTimeouts()
     }
 
     render () {

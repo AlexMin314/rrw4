@@ -12,6 +12,9 @@ const Lazy = Async({
   },
   App: {
     loader: () => import('./containers/App')
+  },
+  Test: {
+    loader: () => import('./containers/Test')
   }
 })
 
@@ -20,7 +23,10 @@ const Root = props => {
     <Provider store={{}}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <Route exact path={'/'} component={Lazy.App} />
+          <React.Fragment>
+            <Route exact path={'/'} component={Lazy.App} />
+            <Route path={'/test'} component={Lazy.Test} />
+          </React.Fragment>
         </BrowserRouter>
       </ThemeProvider>
     </Provider>

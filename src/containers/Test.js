@@ -6,13 +6,13 @@ const Button = styled.button`
   height: 80px;
 `
 
-const App = props => {
+const Test = props => {
   return (
     <div>
-      hello App
-      <Button onClick={() => console.log('pressed') || props.history.push('/test')}>Go to</Button>
+      hello Test
+      <Button onClick={() => console.log('pressed') || props.history.push('/')}>Go to</Button>
     </div>
   )
 }
 
-export default App
+export default Test
