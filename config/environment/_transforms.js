@@ -6,8 +6,8 @@ module.exports = () => [
     modules: {
       transform: member => `modules/${member}/${member}`
     },
-    utils: {
-      transform: member => `utils/${member}`
+    components: {
+      transform: member => `components/${member}/${member}`
     },
     lodash: {
       transform: (importName, match) => `lodash/${importName}`,
