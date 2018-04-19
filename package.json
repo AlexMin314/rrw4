@@ -1,5 +1,5 @@
 {
-  "name": "react-webpack4",
+  "name": "react-redux-webpack4",
   "version": "1.0.0",
   "description": "mininal react setups",
   "main": "index.js",
@@ -12,8 +12,6 @@
     "stats": "webpack --mode production --env.STAT --config ./config/environment/webpack.config.stat.js --progress --colors"
   },
   "dependencies": {
-    "history": "^4.7.2",
-    "immutable": "^3.8.2",
     "lodash": "^4.17.5",
     "moment": "^2.22.0",
     "react": "^16.3.1",
@@ -23,11 +21,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
-    "redux-act": "^1.7.4",
-    "redux-thunk": "^2.2.0",
-    "reselect": "^3.0.1",
-    "styled-components": "^3.2.5",
-    "styled-theming": "^2.2.0"
+    "styled-components": "^3.2.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
