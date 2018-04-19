@@ -16,7 +16,7 @@ const Route1 = props => {
   const { history } = props
   return (
     <TempWrapper>
-      <div>Welcome to Route 1</div>
+      <div>Welcome to Route 12345</div>
       <Button onClick={() => history.push('/2')}>Go to Route 2</Button>
     </TempWrapper>
   )

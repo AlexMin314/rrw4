@@ -7,16 +7,16 @@ import { theme, lazyRoute as Async } from 'modules'
 
 const Lazy = Async({
   options: {
-    LoadingComponent: () => <div>Loading...</div>,
-    preloadAll: true // preload every async components
+    LoadingComponent: () => <div>Loading...</div>
   },
   App: {
     loader: () => import('./containers/App'),
     preload: true // preload selected async component
   }
 })
-
+console.log(process.env.NODE_ENV)
 const Root = props => {
+  console.log('render')
   return (
     <Provider store={{}}>
       <ThemeProvider theme={theme}>

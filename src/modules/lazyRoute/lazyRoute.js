@@ -16,7 +16,9 @@ const lazyLoad = configs => {
     timeout = 10000,
     LoadingComponent = () => <div />,
     ErrorComponent = _ErrorComp,
-    preload = false
+    preload = false,
+    preloadAll = process.env.NODE_ENV === 'development'
+    // onActive = () => {}
   } = configs
 
   let preloadComp = null
@@ -26,7 +28,7 @@ const lazyLoad = configs => {
     preloadComp = C.default
   }
 
-  if (preload) preloadFn()
+  if (preload || preloadAll) preloadFn()
 
   return class AsyncComponent extends React.Component {
     state = {
