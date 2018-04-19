@@ -12,6 +12,7 @@ module.exports = (env, arg, proxy = {}) => {
     https: protocol, // true for self-signed, object for cert authority
     port: port,
     proxy: proxy,
+    historyApiFallback: true,
     contentBase: paths.build,
     compress: true, // enable gzip compression
     watchOptions: {
@@ -26,7 +27,12 @@ module.exports = (env, arg, proxy = {}) => {
     clientLogLevel: 'none', // display HMR log to browser
     public: `localhost:${port}`, // --open
     before (app) {
-      console.log('\n', chalk.bgCyan.black('\n DEV SERVER '), chalk.cyan('Starting the development server...\n'), '\n')
+      console.log(
+        '\n',
+        chalk.bgCyan.black('\n DEV SERVER '),
+        chalk.cyan('Starting the development server...\n'),
+        '\n'
+      )
     }
   }
 }
