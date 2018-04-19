@@ -58,7 +58,7 @@ module.exports = [
       loader: 'babel-loader',
       options: {
         babelrc: false,
-        // cacheDirectory: true,
+        cacheDirectory: true,
         presets: [['env', { modules: false }], 'react'],
         env: {
           development: {},

@@ -9,7 +9,9 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --config ./config/environment/webpack.config.dev.js",
     "build": "webpack  --mode production --config ./config/environment/webpack.config.prod.js",
-    "stats": "webpack --mode production --env.STAT --config ./config/environment/webpack.config.stat.js --progress --colors"
+    "stats": "webpack --mode production --env.STAT --config ./config/environment/webpack.config.stat.js --progress --colors",
+    "clean": "rm -rf ./node_modules/.cache && rm -rf ./dist",
+    "reset": "rm -rf ./node_modules && yarn install"
   },
   "dependencies": {
     "history": "^4.7.2",
@@ -65,7 +67,7 @@
     "style-loader": "^0.20.3",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "url-loader": "^1.0.1",
-    "webpack": "^4.5.0",
+    "webpack": "^4.6.0",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.14",
     "webpack-dev-server": "^3.1.3",
