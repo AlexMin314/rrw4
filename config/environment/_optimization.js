@@ -60,7 +60,7 @@ const prod = {
           drop_console: true // remove console
         },
         output: {
-          comments: false // remove comments
+          comments: true // remove comments
         }
       }
     })
