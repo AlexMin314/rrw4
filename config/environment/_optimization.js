@@ -1,5 +1,6 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
+// https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
 const codeSplit = {
   chunks: 'async',
   minSize: 30000,
@@ -60,7 +61,7 @@ const prod = {
           drop_console: true // remove console
         },
         output: {
-          comments: false // remove comments
+          comments: true // remove comments
         }
       }
     })

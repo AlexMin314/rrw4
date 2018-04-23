@@ -5,18 +5,25 @@ import { ThemeProvider } from 'styled-components'
 
 import { theme, lazyRoute as Async } from 'modules'
 
+// Might no need additional options...
+// import(
+//   /* webpackChunkName: "test" */
+//   /* webpackPrefetch: true */
+//   "Component"
+// )
+// import(/* webpackPreload: true */ "Components")
 const Lazy = Async({
   options: {
     LoadingComponent: () => <div>Loading...</div>
   },
   App: {
-    loader: () => import('./containers/App'),
-    preload: true // preload selected async component
+    loader: () => import('./containers/App')
   }
 })
-console.log(process.env.NODE_ENV)
+
+// TODO: webpack plugin for hot loading
+
 const Root = props => {
-  console.log('render')
   return (
     <Provider store={{}}>
       <ThemeProvider theme={theme}>
